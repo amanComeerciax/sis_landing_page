@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Capabilities from "@/components/Capabilities";
+import WhyChoose from "@/components/WhyChoose";
 import Architecture from "@/components/Architecture";
 import Stats from "@/components/Stats";
 import FinalCTA from "@/components/FinalCTA";
@@ -12,8 +13,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Capabilities />
-      <Architecture />
+      <WhyChoose />
       <Stats />
+      <Architecture />
       <FinalCTA />
       <Footer />
     </main>

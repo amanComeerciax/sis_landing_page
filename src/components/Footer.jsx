@@ -12,7 +12,10 @@ export default function Footer() {
               <span className="text-xl font-bold text-white tracking-tighter">SISWIT</span>
             </div>
             <p className="text-white/35 max-w-xs leading-relaxed text-[14px]">
-              Empowering enterprises with unified cloud intelligence for CPQ, CLM, and CRM.
+              Empowering enterprises with unified cloud intelligence for CPQ, CLM, CRM, and ERP.
+            </p>
+            <p className="mt-4 text-white/25 text-[13px]">
+              sisiwtpvdltd@gmail.com
             </p>
           </div>
 
@@ -20,7 +23,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold text-[14px] mb-5">Product</h4>
             <ul className="space-y-3">
-              {["CPQ", "CLM", "CRM", "Analytics"].map((item) => (
+              {["CPQ", "CLM", "CRM", "ERP", "Doc Automation"].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-white/35 text-[14px] hover:text-cyan-400 transition-colors">{item}</a>
                 </li>
@@ -28,23 +31,23 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Company */}
+          {/* Solutions */}
+          <div>
+            <h4 className="text-white font-bold text-[14px] mb-5">Solutions</h4>
+            <ul className="space-y-3">
+              {["Enterprise", "Mid-Market", "Startups", "Industries"].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-white/35 text-[14px] hover:text-cyan-400 transition-colors">{item}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company + Resources */}
           <div>
             <h4 className="text-white font-bold text-[14px] mb-5">Company</h4>
             <ul className="space-y-3">
-              {["About Us", "Careers", "Blog", "Contact"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-white/35 text-[14px] hover:text-cyan-400 transition-colors">{item}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h4 className="text-white font-bold text-[14px] mb-5">Legal</h4>
-            <ul className="space-y-3">
-              {["Privacy", "Terms", "Security", "GDPR"].map((item) => (
+              {["About Us", "Careers", "Press", "Contact"].map((item) => (
                 <li key={item}>
                   <a href="#" className="text-white/35 text-[14px] hover:text-cyan-400 transition-colors">{item}</a>
                 </li>
@@ -55,10 +58,15 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/[0.05] flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-white/20 text-[13px]">© 2026 SISWIT Infra. All rights reserved.</p>
+          <p className="text-white/20 text-[13px]">© 2026 SISWIT Infra Pvt. Ltd. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            {["Twitter", "LinkedIn", "GitHub"].map((item) => (
+            {["Privacy Policy", "Terms", "Cookie Policy"].map((item) => (
               <a key={item} href="#" className="text-white/20 text-[13px] hover:text-white transition-colors">{item}</a>
+            ))}
+          </div>
+          <div className="flex items-center gap-6">
+            {["LinkedIn", "Twitter"].map((item) => (
+              <a key={item} href="#" className="text-white/20 text-[13px] hover:text-cyan-400 transition-colors">{item}</a>
             ))}
           </div>
         </div>

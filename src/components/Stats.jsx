@@ -3,10 +3,10 @@
 import { motion } from "motion/react";
 
 const stats = [
-  { val: "99.9%", label: "Platform Uptime" },
-  { val: "40%", label: "Faster Sales Cycle" },
   { val: "500+", label: "Enterprise Clients" },
-  { val: "24/7", label: "Priority Support" },
+  { val: "99.99%", label: "Uptime SLA" },
+  { val: "50M+", label: "Contracts Processed" },
+  { val: "150+", label: "Countries Served" },
 ];
 
 export default function Stats() {
