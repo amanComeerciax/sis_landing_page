@@ -366,7 +366,10 @@ export default function FloatingLines({
     const mesh = new Mesh(geometry, material);
     scene.add(mesh);
 
-    const clock = new Clock();
+    const clock = { 
+      getElapsedTime: () => performance.now() / 1000,
+      getDelta: () => 0.016 // fallback delta
+    };
 
     const setSize = () => {
       if (!active) return;

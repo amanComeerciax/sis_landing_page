@@ -19,12 +19,19 @@ export default function RadialOrbitalTimeline({
   });
   const [activeNodeId, setActiveNodeId] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const containerRef = useRef(null);
   const orbitRef = useRef(null);
   const nodeRefs = useRef({});
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Performance Fix: Intersection Observer to pause when not visible
   useEffect(() => {
+    if (!mounted) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -37,7 +44,7 @@ export default function RadialOrbitalTimeline({
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [mounted]);
 
   const handleContainerClick = (e) => {
     if (e.target === containerRef.current || e.target === orbitRef.current) {
@@ -177,7 +184,7 @@ export default function RadialOrbitalTimeline({
           <div className="absolute w-96 h-96 rounded-full border border-white/5"></div>
           <div className="absolute w-[300px] h-[300px] rounded-full border border-white/5"></div>
 
-          {timelineData.map((item, index) => {
+          {mounted && timelineData.map((item, index) => {
             const position = calculateNodePosition(index, timelineData.length);
             const isExpanded = expandedItems[item.id];
             const isRelated = isRelatedToActive(item.id);

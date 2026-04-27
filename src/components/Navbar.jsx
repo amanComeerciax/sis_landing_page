@@ -23,13 +23,20 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl h-14 flex items-center justify-between px-4 rounded-full border border-white/[0.08] bg-[#010101]/60 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
         
         {/* Logo Section */}
-        <div className="flex items-center gap-2 cursor-pointer group">
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-blue-600 shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-transform group-hover:rotate-12">
-            <span className="text-white font-black text-lg italic">S</span>
+        <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white/[0.03] border border-white/[0.05] shadow-[0_0_20px_rgba(34,211,238,0.1)] transition-all group-hover:border-cyan-400/50 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]">
+            <img 
+              src="/assets/logo.png" 
+              alt="SISWIT Logo" 
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
           </div>
-          <span className="hidden sm:block text-lg font-black tracking-tighter text-white">
-            SISWIT
-          </span>
+          <div className="flex flex-col -space-y-1">
+            <span className="text-lg font-black tracking-tighter text-white">
+              SISWIT
+            </span>
+            <span className="text-[8px] font-bold text-cyan-400/60 uppercase tracking-[0.2em]">Tech Solutions</span>
+          </div>
         </div>
 
         {/* Desktop Navigation */}
