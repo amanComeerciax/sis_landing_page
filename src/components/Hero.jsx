@@ -42,7 +42,7 @@ export default function Hero() {
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <video
           ref={videoRef}
-          className="min-w-full min-h-full object-cover video-blend opacity-70 scale-125 translate-y-[10%]"
+          className="min-w-full min-h-full object-cover opacity-80 scale-125 translate-y-[10%]"
           autoPlay
           muted
           loop
@@ -53,18 +53,17 @@ export default function Hero() {
       </div>
 
       {/* ── Text Content Layer (z-30) ── */}
-      <div className="relative z-30 flex-1 flex flex-col items-center justify-center w-full px-6 pt-28 pb-16 text-center">
-        <div className="max-w-5xl w-full flex flex-col items-center">
-
-          {/* Badge */}
+      <div className="relative z-30 flex flex-col items-center justify-center w-full h-full px-6 text-center">
+        <div className="max-w-5xl flex flex-col items-center">
+          
           <motion.div
-            initial={{ opacity: 0, y: -20, filter: "blur(10px)" }}
+            initial={{ opacity: 0, y: -20, filter: "blur(4px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ duration: 0.7 }}
           >
-            <div className="inline-flex items-center gap-3 rounded-full border border-cyan-500/20 bg-cyan-500/5 pl-1.5 pr-5 py-1.5 backdrop-blur-xl">
-              <span className="relative flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
-                <Cpu className="h-3.5 w-3.5 text-white" />
+            <div className="inline-flex items-center gap-3 rounded-full border border-cyan-500/20 bg-cyan-500/5 pl-1.5 pr-5 py-1.5 backdrop-blur-sm">
+              <span className="relative flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-600 shadow-[0_0_20px_rgba(34,211,238,0.4)]">
+                <Zap className="h-3.5 w-3.5 text-white" fill="white" strokeWidth={0} />
               </span>
               <span className="text-[12px] font-bold text-cyan-100/60 tracking-[0.15em] uppercase">
                 V2.0 Enterprise Ecosystem
@@ -74,7 +73,7 @@ export default function Hero() {
 
           {/* Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 40, filter: "blur(15px)" }}
+            initial={{ opacity: 0, y: 40, filter: "blur(5px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 flex flex-col items-center"
@@ -108,7 +107,7 @@ export default function Hero() {
 
           {/* Subtext */}
           <motion.p
-            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+            initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
             animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             transition={{ delay: 0.45, duration: 0.8 }}
             className="mt-8 max-w-2xl text-[15px] sm:text-[18px] leading-relaxed text-white/50 font-medium"
@@ -169,9 +168,9 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Trust Bar / Logo Cloud ── */}
-      <div className="relative z-30 w-full border-t border-cyan-500/10 bg-white/[0.02] backdrop-blur-2xl py-10">
-        <div className="mx-auto max-w-7xl flex flex-col items-center gap-8 px-6 md:flex-row">
+      {/* ── Logo Cloud (Fixed at bottom of Hero) ── */}
+      <div className="relative z-30 w-full border-t border-white/[0.05] bg-black/60 backdrop-blur-md py-10">
+        <div className="mx-auto max-w-7xl flex flex-col items-center gap-6 px-6 md:flex-row">
           <div className="shrink-0 text-center md:pr-10">
             <p className="text-[11px] font-black text-cyan-400 uppercase tracking-[0.2em]">
               Powering the world&apos;s most ambitious teams
