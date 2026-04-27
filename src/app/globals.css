@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: #010101;
+  --color-foreground: #ffffff;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Brand gradient colors */
+  --color-brand-pink: #FA93FA;
+  --color-brand-purple: #C967E8;
+  --color-brand-deep: #983AD6;
+}
+
+/* ── Base Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background: #010101;
+  color: #ffffff;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #010101;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 154, 255, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 154, 255, 0.5);
+}
+
+::selection {
+  background: rgba(59, 154, 255, 0.3);
+  color: #fff;
+}
+
+/* ── Gradient Text Utility ── */
+.gradient-text-hero {
+  background: linear-gradient(180deg, #ffffff 0%, #E0F7FF 20%, #7DD3FC 45%, #0EA5E9 75%, #0284C7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Video blend ── */
+.video-blend {
+  mix-blend-mode: screen;
+}
+
+/* ── Infinite slider ── */
+.slider-mask {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+/* ── Glow animation ── */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 12px 2px rgba(59, 154, 255, 0.4), 0 0 24px 4px rgba(26, 111, 224, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px 4px rgba(59, 154, 255, 0.6), 0 0 40px 8px rgba(26, 111, 224, 0.3);
+  }
+}
+
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* ── Shimmer for CTA ── */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s ease-in-out infinite;
+}
