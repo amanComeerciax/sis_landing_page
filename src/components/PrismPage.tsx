@@ -146,8 +146,9 @@ const fragmentShaderSource = `
         float h = hash(dot(p, vec3(12.9898, 78.233, 54.53)));
         if(h > 0.98) stars = pow(h - 0.98, 10.0) * 20.0;
         vec3 nebula = vec3(0.0);
-        nebula += vec3(0.3, 0.15, 0.5) * pow(max(0.0, sin(rd.x * 2.0 + uTime * 0.1)), 3.0) * 0.2;
-        nebula += vec3(0.15, 0.3, 0.6) * pow(max(0.0, sin(rd.y * 2.5 + uTime * 0.05)), 3.0) * 0.2;
+        // Professional Indigo/Blue Nebula
+        nebula += vec3(0.31, 0.27, 0.9) * pow(max(0.0, sin(rd.x * 2.0 + uTime * 0.1)), 3.0) * 0.15;
+        nebula += vec3(0.15, 0.45, 0.8) * pow(max(0.0, sin(rd.y * 2.5 + uTime * 0.05)), 3.0) * 0.15;
         
         return stars + nebula;
     }

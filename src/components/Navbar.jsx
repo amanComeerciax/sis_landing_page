@@ -128,7 +128,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col -space-y-1">
             <span className="text-lg font-black tracking-tighter text-white">SISWIT</span>
-            <span className="text-[8px] font-bold text-cyan-400/60 uppercase tracking-[0.2em]">Tech Solutions</span>
+            <span className="text-[8px] font-bold text-indigo-400/60 uppercase tracking-[0.2em]">Tech Solutions</span>
           </div>
         </div>
 
@@ -169,7 +169,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 10, scale: 0.95 }}
                       transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                      className="bg-[#0a0a0a]/95 backdrop-blur-3xl border border-white/10 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-2xl w-max"
+                      className="bg-[#020617]/95 backdrop-blur-3xl border border-white/10 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.6)] rounded-2xl w-max"
                     >
                       <div className="flex gap-10">
                         {item.subMenus.map((sub) => (
@@ -183,11 +183,11 @@ export default function Navbar() {
                                 return (
                                   <li key={subItem.label}>
                                     <a href="#" className="flex items-start gap-3 group/item">
-                                      <div className="size-8 rounded-lg bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 transition-all group-hover/item:bg-cyan-500/10 group-hover/item:border-cyan-500/50">
-                                        <Icon className="size-3.5 text-white/50 group-hover/item:text-cyan-400 transition-colors" />
+                                      <div className="size-8 rounded-lg bg-white/[0.03] border border-white/10 flex items-center justify-center shrink-0 transition-all group-hover/item:bg-indigo-500/10 group-hover/item:border-indigo-500/50">
+                                        <Icon className="size-3.5 text-white/50 group-hover/item:text-indigo-400 transition-colors" />
                                       </div>
                                       <div className="space-y-0.5">
-                                        <p className="text-[12px] font-bold text-white group-hover/item:text-cyan-400 transition-colors">
+                                        <p className="text-[12px] font-bold text-white group-hover/item:text-indigo-400 transition-colors">
                                           {subItem.label}
                                         </p>
                                         <p className="text-[10px] text-white/35 leading-tight group-hover/item:text-white/50 transition-colors">
@@ -214,8 +214,8 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.05]">
             <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-cyan-400" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-400" />
             </span>
             <span className="text-[10px] font-black text-white/40 tracking-[0.1em] uppercase">V2.4.0</span>
           </div>

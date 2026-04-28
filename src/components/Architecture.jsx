@@ -68,7 +68,7 @@ export default function Architecture() {
               </p>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight">
                 The Integrated{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-500">
                   Data Core
                 </span>
               </h2>
@@ -83,7 +83,7 @@ export default function Architecture() {
                   "Centralized Source of Truth",
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-white/60 font-medium text-[15px]">
-                    <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.8)]" />
+                    <span className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(79,70,229,0.8)]" />
                     {item}
                   </li>
                 ))}
@@ -103,11 +103,11 @@ export default function Architecture() {
                 skewAmount={4}
               >
                 {architectureData.map((item) => (
-                  <Card key={item.id} className="relative group overflow-hidden">
+                  <Card key={item.id} className="relative group overflow-hidden border-white/[0.05] bg-[#030712]">
                     {/* Card Content */}
                     <div className="relative z-10 flex flex-col h-full">
                       <div className="flex justify-between items-start mb-6">
-                        <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 text-cyan-400">
+                        <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 text-indigo-400">
                           <item.icon size={24} />
                         </div>
                         <span className="text-[10px] font-black uppercase tracking-widest text-white/20 bg-white/5 px-3 py-1 rounded-full">
@@ -115,7 +115,7 @@ export default function Architecture() {
                         </span>
                       </div>
                       
-                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
                         {item.title}
                       </h3>
                       <p className="text-sm text-white/40 leading-relaxed">
@@ -125,23 +125,23 @@ export default function Architecture() {
                       <div className="mt-auto pt-6 border-t border-white/5">
                         <div className="flex justify-between items-center mb-2">
                           <span className="text-[10px] font-bold text-white/20 uppercase">Efficiency Level</span>
-                          <span className="text-[10px] font-mono text-cyan-400">{item.energy}%</span>
+                          <span className="text-[10px] font-mono text-emerald-400">{item.energy}%</span>
                         </div>
                         <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
                           <motion.div 
                             initial={{ width: 0 }}
                             whileInView={{ width: `${item.energy}%` }}
                             transition={{ duration: 1, delay: 0.5 }}
-                            className="h-full bg-gradient-to-r from-cyan-500 to-blue-500" 
+                            className="h-full bg-gradient-to-r from-indigo-500 to-emerald-500" 
                           />
                         </div>
                       </div>
                     </div>
 
                     {/* Decorative Elements */}
-                    <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/5 blur-3xl rounded-full" />
+                    <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/5 blur-3xl rounded-full" />
                     <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <ArrowRight size={20} className="text-cyan-400" />
+                      <ArrowRight size={20} className="text-indigo-400" />
                     </div>
                   </Card>
                 ))}

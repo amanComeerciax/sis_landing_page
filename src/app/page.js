@@ -11,8 +11,7 @@ const Capabilities = dynamic(() => import("@/components/Capabilities"), { ssr: f
 const WhyChoose = dynamic(() => import("@/components/WhyChoose"), { ssr: false });
 const Architecture = dynamic(() => import("@/components/Architecture"), { ssr: false });
 const Stats = dynamic(() => import("@/components/Stats"), { ssr: false });
-const FinalCTA = dynamic(() => import("@/components/FinalCTA"), { ssr: false });
-const PrismPage = dynamic(() => import("@/components/PrismPage"), { ssr: false });
+const PremiumCTA = dynamic(() => import("@/components/PremiumCTA"), { ssr: false });
 const Footer = dynamic(() => import("@/components/ui/flickering-footer").then(mod => mod.Component), { ssr: false });
 
 if (typeof window !== "undefined") {
@@ -50,7 +49,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main ref={containerRef} className="flex-1 bg-[#010101] selection:bg-cyan-500/30">
+    <main ref={containerRef} className="flex-1 bg-[#020617] selection:bg-indigo-500/30">
       <Navbar />
       <Hero />
       <Suspense fallback={<LoadingFallback />}>
@@ -67,10 +66,7 @@ export default function Home() {
           <Stats />
         </div>
         <div className="gsap-reveal">
-          <FinalCTA />
-        </div>
-        <div className="gsap-reveal">
-          <PrismPage />
+          <PremiumCTA />
         </div>
         <Footer />
       </Suspense>
