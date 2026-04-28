@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { ArrowRight } from "lucide-react";
 
 // ==========================================
 // SHADER SOURCES
@@ -24,8 +23,8 @@ const fragmentShaderSource = `
     #define PI 3.14159265359
     #define TAU 6.28318530718
     #define MAX_STEPS 30
-    #define MAX_DIST 25.0
-    #define SURF_DIST 0.002
+    #define MAX_DIST 50.0
+    #define SURF_DIST 0.001
     
     float hash(float n) {
         return fract(sin(n) * 43758.5453123);
@@ -96,7 +95,7 @@ const fragmentShaderSource = `
         
         float k_blend = 0.2 + 0.15 * (0.5 + 0.5 * sin(uTime * 1.5));
         
-        for(int i = 0; i < 4; i++) {
+        for(int i = 0; i < 2; i++) {
             float fi = float(i);
             float angle = fi * TAU / 4.0 + uTime * 0.3;
             
@@ -255,8 +254,8 @@ export default function PrismPage() {
         if (!canvas) return;
 
         const gl =
-            canvas.getContext("webgl") ||
-            (canvas.getContext("experimental-webgl") as WebGLRenderingContext);
+            canvas.getContext("webgl", { antialias: false, powerPreference: "high-performance" }) ||
+            (canvas.getContext("experimental-webgl", { antialias: false, powerPreference: "high-performance" }) as WebGLRenderingContext);
 
         if (!gl) {
             console.error("WebGL not supported");
@@ -265,10 +264,9 @@ export default function PrismPage() {
 
         // Resize handling
         const resizeCanvas = () => {
-            // Render at lower resolution and scale up for performance
-            const pixelRatio = 0.3; 
-            canvas.width = canvas.clientWidth * pixelRatio;
-            canvas.height = canvas.clientHeight * pixelRatio;
+            const pixelRatio = Math.min(window.devicePixelRatio || 1, 1); // Cap at 1x to fix lag on high-DPI displays
+            canvas.width = window.innerWidth * pixelRatio;
+            canvas.height = window.innerHeight * pixelRatio;
             gl.viewport(0, 0, canvas.width, canvas.height);
         };
         resizeCanvas();
@@ -338,8 +336,8 @@ export default function PrismPage() {
 
         // Mouse Tracking for WebGL
         const handleMouseMove = (e: MouseEvent) => {
-            mouseRef.current.targetX = e.clientX / canvas.width;
-            mouseRef.current.targetY = 1.0 - e.clientY / canvas.height;
+            mouseRef.current.targetX = e.clientX / window.innerWidth;
+            mouseRef.current.targetY = 1.0 - e.clientY / window.innerHeight;
         };
         window.addEventListener("mousemove", handleMouseMove);
 
@@ -386,8 +384,8 @@ export default function PrismPage() {
     }, []);
 
     return (
-        <div className="relative w-full h-[800px] min-h-[80vh] bg-black overflow-hidden font-sans rounded-3xl my-10">
-            <style jsx global>{`
+        <div className="relative w-full h-screen bg-black overflow-hidden font-sans">
+            <style jsx>{`
         @keyframes glowPulse {
           from {
             filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.4))
@@ -484,37 +482,38 @@ export default function PrismPage() {
             {/* WebGL Canvas */}
             <canvas
                 ref={canvasRef}
-                className="block absolute inset-0 w-full h-full rounded-3xl"
+                className="block absolute inset-0 w-full h-full"
             />
 
             {/* Content Overlay */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center text-white pointer-events-none w-full px-4">
                 {/* Title */}
-                <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight max-w-3xl mx-auto drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+                <h1
+                    className="font-black mb-2 animate-glowPulse tracking-tighter bg-gradient-to-br from-white via-[#f0f0f0] to-white bg-clip-text text-transparent font-outfit"
+                    style={{
+                        fontSize: "clamp(2rem, 8vw, 5rem)",
+                    }}
+                >
                     Need help choosing the right solution track?
-                </h2>
+                </h1>
 
                 {/* Tagline */}
-                <p className="text-white/90 text-lg mb-10 max-w-2xl mx-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+                <p className="text-[clamp(0.9rem,2vw,1.2rem)] font-light tracking-[0.3em] uppercase text-white/90 drop-shadow-[0_0_30px_rgba(255,255,255,0.5)]">
                     We will map your goals, team size, and systems to a rollout plan that fits.
                 </p>
 
                 {/* Buttons */}
-                <div className="flex justify-center gap-4 mt-10 pointer-events-auto flex-col sm:flex-row items-center">
-                    <button
-                        onMouseMove={handleButtonMouseMove}
-                        className="glass-button relative px-8 py-4 text-base font-semibold tracking-wider text-[#1a1a2e] bg-white border-[1.5px] border-transparent rounded-xl overflow-hidden cursor-pointer transition-all duration-300 shadow-lg hover:-translate-y-1 hover:scale-105 active:scale-95 flex items-center justify-center"
-                    >
-                        <span className="shimmer-effect absolute -top-1/2 -left-1/2 w-[200%] h-[200%] rotate-[30deg] pointer-events-none" />
-                        <span className="relative z-10 flex items-center gap-2">Talk to an Expert <ArrowRight className="w-4 h-4" /></span>
-                    </button>
-                    <button
-                        onMouseMove={handleButtonMouseMove}
-                        className="glass-button relative px-8 py-4 text-base font-semibold tracking-wider text-white border-[1.5px] border-white/30 rounded-xl overflow-hidden cursor-pointer transition-all duration-300 backdrop-blur-md shadow-lg hover:-translate-y-1 hover:bg-white/10 hover:scale-105 active:scale-95"
-                    >
-                        <span className="shimmer-effect absolute -top-1/2 -left-1/2 w-[200%] h-[200%] rotate-[30deg] pointer-events-none" />
-                        <span className="relative z-10">Compare Pricing</span>
-                    </button>
+                <div className="flex justify-center gap-4 md:gap-6 mt-10 pointer-events-auto">
+                    {["Talk to Expert", "Compare Pricing"].map((text, idx) => (
+                        <button
+                            key={idx}
+                            onMouseMove={handleButtonMouseMove}
+                            className="glass-button relative px-6 md:px-10 py-3 md:py-4 text-sm md:text-base font-semibold tracking-wider text-white border-[1.5px] border-transparent rounded-[40px] overflow-hidden cursor-pointer transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] backdrop-blur-[30px] shadow-[0_8px_32px_rgba(0,0,0,0.2)] hover:-translate-y-[3px] hover:scale-102 hover:shadow-[0_12px_48px_rgba(138,43,226,0.3),0_0_80px_rgba(0,191,255,0.2)] active:-translate-y-px active:scale-98 bg-white/5"
+                        >
+                            <span className="shimmer-effect absolute -top-1/2 -left-1/2 w-[200%] h-[200%] -rotate-30 pointer-events-none" />
+                            <span className="relative z-10">{text}</span>
+                        </button>
+                    ))}
                 </div>
             </div>
         </div>

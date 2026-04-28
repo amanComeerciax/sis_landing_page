@@ -42,11 +42,13 @@ export default function Hero() {
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         <video
           ref={videoRef}
-          className="min-w-full min-h-full object-cover opacity-80 scale-125 translate-y-[10%]"
+          className="min-w-full min-h-full object-cover opacity-80 scale-125 translate-y-[10%] will-change-transform"
           autoPlay
           muted
           loop
           playsInline
+          disablePictureInPicture
+          disableRemotePlayback
           preload="auto"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#010101] via-transparent to-[#010101] z-20" />
@@ -57,8 +59,8 @@ export default function Hero() {
         <div className="max-w-5xl flex flex-col items-center">
           
           <motion.div
-            initial={{ opacity: 0, y: -20, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
             <div className="inline-flex items-center gap-3 rounded-full border border-cyan-500/20 bg-cyan-500/5 pl-1.5 pr-5 py-1.5 backdrop-blur-sm">
@@ -73,8 +75,8 @@ export default function Hero() {
 
           {/* Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 40, filter: "blur(5px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             className="mt-10 flex flex-col items-center"
           >
@@ -107,8 +109,8 @@ export default function Hero() {
 
           {/* Subtext */}
           <motion.p
-            initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
-            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.8 }}
             className="mt-8 max-w-2xl text-[15px] sm:text-[18px] leading-relaxed text-white/50 font-medium"
           >
