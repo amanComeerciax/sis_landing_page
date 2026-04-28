@@ -1,75 +1,49 @@
 "use client";
 
 import { motion } from "motion/react";
-import RadialOrbitalTimeline from "@/components/ui/radial-orbital-timeline";
-import { Shield, Zap, TrendingUp, Cpu, Lock, Globe } from "lucide-react";
+import CardSwap, { Card } from "@/components/ui/CardSwap";
+import { Shield, Zap, TrendingUp, Cpu, Lock, Globe, ArrowRight } from "lucide-react";
 
 const architectureData = [
   {
     id: 1,
-    title: "CRM",
-    date: "Phase 1",
+    title: "CRM Intelligence",
     content: "Relationship Intelligence providing a centralized source of truth for all customer data.",
     category: "Sales",
     icon: Shield,
-    relatedIds: [2, 6],
-    status: "completed",
     energy: 95,
   },
   {
     id: 2,
-    title: "CPQ",
-    date: "Phase 2",
+    title: "CPQ Automation",
     content: "Configure, Price, Quote automation ensuring accuracy and speed in complex deal structures.",
     category: "Revenue",
     icon: Zap,
-    relatedIds: [1, 3],
-    status: "completed",
     energy: 88,
   },
   {
     id: 3,
-    title: "CLM",
-    date: "Phase 3",
+    title: "CLM Workflows",
     content: "Contract Lifecycle Management for seamless legal workflows and risk mitigation.",
     category: "Legal",
     icon: Lock,
-    relatedIds: [2, 4],
-    status: "completed",
     energy: 82,
   },
   {
     id: 4,
-    title: "ERP",
-    date: "Phase 4",
+    title: "ERP Integration",
     content: "Enterprise Resource Planning integration for bi-directional finance and ops data flow.",
     category: "Finance",
     icon: Globe,
-    relatedIds: [3, 5],
-    status: "in-progress",
     energy: 65,
   },
   {
     id: 5,
     title: "AI Core",
-    date: "Phase 5",
     content: "Predictive analytics and smart automation driving faster decision making.",
     category: "Intelligence",
     icon: Cpu,
-    relatedIds: [4, 6],
-    status: "in-progress",
     energy: 70,
-  },
-  {
-    id: 6,
-    title: "Docs",
-    date: "Phase 6",
-    content: "Automated document generation and digital signature workflows.",
-    category: "Automation",
-    icon: TrendingUp,
-    relatedIds: [5, 1],
-    status: "pending",
-    energy: 40,
   },
 ];
 
@@ -117,16 +91,62 @@ export default function Architecture() {
             </motion.div>
           </div>
 
-          {/* Right: Interactive Visual Diagram */}
-          <div className="flex-1 w-full flex justify-center min-h-[600px]">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="w-full h-full"
-            >
-              <RadialOrbitalTimeline timelineData={architectureData} />
-            </motion.div>
+          {/* Right: Interactive Card Stack */}
+          <div className="flex-1 w-full flex justify-center lg:justify-end min-h-[500px] relative">
+            <div className="relative w-full max-w-[450px] h-[400px]">
+              <CardSwap
+                width="100%"
+                height={320}
+                cardDistance={40}
+                verticalDistance={30}
+                delay={4000}
+                skewAmount={4}
+              >
+                {architectureData.map((item) => (
+                  <Card key={item.id} className="relative group overflow-hidden">
+                    {/* Card Content */}
+                    <div className="relative z-10 flex flex-col h-full">
+                      <div className="flex justify-between items-start mb-6">
+                        <div className="p-3 rounded-2xl bg-white/[0.03] border border-white/10 text-cyan-400">
+                          <item.icon size={24} />
+                        </div>
+                        <span className="text-[10px] font-black uppercase tracking-widest text-white/20 bg-white/5 px-3 py-1 rounded-full">
+                          {item.category}
+                        </span>
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-white/40 leading-relaxed">
+                        {item.content}
+                      </p>
+
+                      <div className="mt-auto pt-6 border-t border-white/5">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-[10px] font-bold text-white/20 uppercase">Efficiency Level</span>
+                          <span className="text-[10px] font-mono text-cyan-400">{item.energy}%</span>
+                        </div>
+                        <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                          <motion.div 
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${item.energy}%` }}
+                            transition={{ duration: 1, delay: 0.5 }}
+                            className="h-full bg-gradient-to-r from-cyan-500 to-blue-500" 
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Decorative Elements */}
+                    <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/5 blur-3xl rounded-full" />
+                    <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ArrowRight size={20} className="text-cyan-400" />
+                    </div>
+                  </Card>
+                ))}
+              </CardSwap>
+            </div>
           </div>
         </div>
       </div>
