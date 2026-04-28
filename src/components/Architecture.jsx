@@ -76,13 +76,13 @@ export default function Architecture() {
                 A live neural network powering real-time bi-directional data flow. Our integrated stack provides a centralized source of truth, driving 40% higher customer retention.
               </p>
 
-              <ul className="mt-10 space-y-4 inline-flex flex-col items-start">
+              <ul className="mt-10 space-y-4 flex flex-col items-center lg:items-start w-full">
                 {[
                   "Live Neural Network — Real-time data flow",
                   "CRM Relationship Intelligence — 40% higher retention",
                   "Centralized Source of Truth",
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-white/60 font-medium text-[15px]">
+                  <li key={i} className="flex items-center gap-3 text-white/60 font-medium text-[14px] sm:text-[15px]">
                     <span className="h-2 w-2 rounded-full bg-indigo-500 shadow-[0_0_10px_rgba(79,70,229,0.8)]" />
                     {item}
                   </li>
@@ -92,8 +92,8 @@ export default function Architecture() {
           </div>
 
           {/* Right: Interactive Card Stack */}
-          <div className="flex-1 w-full flex justify-center lg:justify-end min-h-[500px] relative">
-            <div className="relative w-full max-w-[450px] h-[400px]">
+          <div className="flex-1 w-full flex justify-center items-center min-h-[380px] md:min-h-[500px] relative">
+            <div className="relative w-full max-w-[320px] sm:max-w-[450px] h-[350px] sm:h-[400px]">
               <CardSwap
                 width="100%"
                 height={320}
@@ -114,7 +114,7 @@ export default function Architecture() {
                           {item.category}
                         </span>
                       </div>
-                      
+
                       <h3 className="text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
                         {item.title}
                       </h3>
@@ -128,11 +128,11 @@ export default function Architecture() {
                           <span className="text-[10px] font-mono text-emerald-400">{item.energy}%</span>
                         </div>
                         <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                          <motion.div 
+                          <motion.div
                             initial={{ width: 0 }}
                             whileInView={{ width: `${item.energy}%` }}
                             transition={{ duration: 1, delay: 0.5 }}
-                            className="h-full bg-gradient-to-r from-indigo-500 to-emerald-500" 
+                            className="h-full bg-gradient-to-r from-indigo-500 to-emerald-500"
                           />
                         </div>
                       </div>

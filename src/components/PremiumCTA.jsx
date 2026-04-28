@@ -16,7 +16,7 @@ export default function PremiumCTA() {
   return (
     <section 
       ref={containerRef}
-      className="relative w-full h-screen min-h-[800px] overflow-hidden flex flex-col justify-center items-center font-barlow"
+      className="relative w-full h-screen min-h-[600px] md:min-h-[800px] overflow-hidden flex flex-col justify-center items-center font-barlow"
     >
       {/* Background Video */}
       <video
@@ -32,7 +32,7 @@ export default function PremiumCTA() {
       {/* Content Container - with 250px bottom padding as requested */}
       <motion.div 
         style={{ opacity }}
-        className="relative z-10 w-full max-w-5xl mx-auto px-6 pb-[250px] flex flex-col items-center text-center mt-auto"
+        className="relative z-10 w-full max-w-5xl mx-auto px-4 md:px-6 pb-20 md:pb-[250px] flex flex-col items-center text-center justify-center"
       >
         {/* Four Corner Accents */}
         <div className="absolute top-0 left-0 w-[7px] h-[7px] bg-white hidden md:block" />
@@ -52,16 +52,16 @@ export default function PremiumCTA() {
 
           {/* Dynamic Headline */}
           <h2 className="flex flex-col items-center justify-center gap-2 mb-8 text-center">
-            <span className="font-light text-white text-[40px] md:text-[64px] leading-tight tracking-tight">
+            <span className="font-light text-white text-[28px] sm:text-[40px] md:text-[64px] leading-tight tracking-tight">
               Ready to Transform Your
             </span>
-            <span className="font-instrument italic text-white text-[48px] md:text-[72px] leading-tight">
+            <span className="font-instrument italic text-white text-[32px] sm:text-[48px] md:text-[72px] leading-tight">
               Business Operations?
             </span>
           </h2>
 
           {/* Sub-headline */}
-          <p className="text-white/75 text-lg md:text-xl font-normal max-w-3xl leading-relaxed mb-12 text-center">
+          <p className="text-white/75 text-base md:text-xl font-normal max-w-3xl leading-relaxed mb-8 md:mb-12 text-center px-2">
             Join 500+ enterprises that have already streamlined their CPQ, CLM, CRM, and ERP processes with SISWIT. Get started with a personalized demo today.
           </p>
 

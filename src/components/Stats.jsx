@@ -55,7 +55,7 @@ export default function Stats() {
               transition={{ delay: i * 0.1, duration: 0.8 }}
               className="text-center"
             >
-              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-cyan-400 mb-3 tabular-nums">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white to-sky-400 mb-3 tabular-nums">
                 <Counter target={s.val} suffix={s.suffix} decimals={s.decimals} />
               </div>
               <div className="text-[11px] sm:text-[12px] font-bold tracking-[0.2em] text-white/30 uppercase">
